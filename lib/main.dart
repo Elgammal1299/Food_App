@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/page/bottom_navbar_page.dart';
 import 'package:food_app/page/home_screen.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class FoodApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Food App',
-      home: HomeScreen(),
+      home: BottomNavbarPage(),
     );
   }
 }
