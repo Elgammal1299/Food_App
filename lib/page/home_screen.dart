@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/model/food_item_model.dart';
+import 'package:food_app/widgets/grid_food_item.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -8,8 +9,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
-
+        // backgroundColor: Colors.white,
         appBar: AppBar(
           title: Text('Food App'),
           backgroundColor: Colors.white,
@@ -30,21 +30,21 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Classic',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    'See All',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-              SizedBox(height: 20),
 
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   children: [
+              //     Text(
+              //       'Classic',
+              //       style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              //     ),
+              //     Text(
+              //       'See All',
+              //       style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              //     ),
+              //   ],
+              // ),
+              // SizedBox(height: 20),
               Expanded(
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -54,40 +54,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   itemCount: food.length,
                   itemBuilder: (context, index) {
-                    return Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Image.asset(
-                              food[index].imgUrl,
-                              fit: BoxFit.cover,
-                              height: 100,
-                            ),
-                          ),
-                          SizedBox(height: 8),
-                          Text(
-                            food[index].name,
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          Text(
-                            'Price: \$${food[index].price}',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.deepOrange,
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
+                    return GridFoodItem(food: food[index]);
                   },
                 ),
               ),
