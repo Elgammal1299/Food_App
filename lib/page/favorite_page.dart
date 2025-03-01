@@ -12,6 +12,23 @@ class _FavoritePageState extends State<FavoritePage> {
   @override
   Widget build(BuildContext context) {
     final favoriteFood = food.where((element) => element.isFavorite).toList();
+    if (favoriteFood.isEmpty) {
+      return Center(
+        child: Column(
+          children: [
+            Image.asset(
+              'assets/images/empty_state.png',
+              height: 350,
+              fit: BoxFit.cover,
+            ),
+            Text(
+              'No favorite food yet!',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+            ),
+          ],
+        ),
+      );
+    }
     return Padding(
       padding: const EdgeInsets.all(16.0),
 
